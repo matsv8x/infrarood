@@ -1,9 +1,10 @@
-let IR_waarde = IR.IR_read()
-let links = 29
-let rechts = 16
-let vooruit = 8
-let achteruit = 5
-let stop = 141
+let IR_waarde = 0
+IR.IR_init()
+let links = 39
+let rechts = 10
+let vooruit = 55
+let achteruit = 20
+let stop = 31
 basic.forever(function () {
     if (IR_waarde == vooruit) {
         basic.showLeds(`
@@ -41,9 +42,18 @@ basic.forever(function () {
             . . # . .
             `)
     }
+    if (IR_waarde == stop) {
+        basic.showLeds(`
+            . . . . .
+            . # # # .
+            . # # # .
+            . # # # .
+            . . . . .
+            `)
+    }
 })
 basic.forever(function () {
-	
+    IR_waarde = IR.IR_read()
 })
 basic.forever(function () {
 	
